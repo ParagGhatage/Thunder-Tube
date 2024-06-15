@@ -3,7 +3,7 @@
     "name": "my-frontend-app",
     "builds": [
       {
-        "src": "public/*",
+        "src": "/*",
         "use": "@vercel/static"
       }
     ],
