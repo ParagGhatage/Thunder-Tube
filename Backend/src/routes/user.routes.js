@@ -1,0 +1,86 @@
+import { Router } from "express";
+import {upload} from "../middlewears/multer.middlewear.js"
+import { changecurrentpassword, getCurrentUser, getUserchannelprofile, getWatchhistory, loginUser, logoutuser, refreshAccessToken, registerUser, updateAccountdetails, updateuseravatar } from "../controllers/user.controller.js";
+import { verifyJwt } from "../middlewears/auth.middlewear.js";
+import { deleteVideo, getAllVideos, publishAVideo, togglePublishStatus, updateVideo } from "../controllers/video.controller.js";
+import { getVideoById } from "../controllers/video.controller.js";
+import { createTweet, deleteTweet, getUserTweets, updateTweet } from "../controllers/tweet.controller.js";
+import { getLikedVideos, toggleCommentLike, toggleTweetLike, toggleVideoLike } from "../controllers/like.controller.js";
+import { get } from "mongoose";
+import { addComment, deleteComment, getVideoComments, updateComment } from "../controllers/comment.controller.js";
+import { getSubscribedChannels, getUserChannelSubscribers, toggleSubscription } from "../controllers/subscription.controller.js";
+import { addVideoToPlaylist, createPlaylist, deletePlaylist, getPlaylistById, getUserPlaylists, removeVideoFromPlaylist, updatePlaylist } from "../controllers/playlist.controller.js";
+import { getChanVideos, getChannelStats, getChannelVideos } from "../controllers/dashboard.controller.js";
+
+
+const router=Router();
+
+router.route("/register").post(
+    upload.fields([
+        { name: "avatar", maxCount: 1 },
+        { name: "coverImage", maxCount: 1 },
+    ])   
+    ,registerUser);
+router.route("/login").post(loginUser) 
+
+//video controller routes
+router.route("/publish").post(verifyJwt,
+    upload.fields([
+        {name:"videoFile",maxcount:1}
+    ]),publishAVideo) 
+    router.route("/videos/:videoid").patch(togglePublishStatus)
+//router.route("/getvideos").get(getAllVideos)
+router.route("/videos/:videoid").get(getVideoById)
+router.route("/videos/:videoid").put(updateVideo)
+router.route("/videos/:videoid").delete(deleteVideo)
+router.route("/getall").get(getAllVideos)
+
+/////////////////////////////////////////////////////////
+//tweet.controller.js
+router.route("/tweet").post(verifyJwt,createTweet);
+router.route("/usertweet/:userid").get(verifyJwt,getUserTweets);
+router.route("/updatetweet/:tweetid").put(verifyJwt, updateTweet);
+router.route("/deletetweet/:tweetid").delete(deleteTweet);
+
+//like.controller.js
+router.route("/like/:videoId").post(verifyJwt,toggleVideoLike);
+router.route("/commentlike").post(verifyJwt,toggleCommentLike);
+router.route("/tweetlike/:tweetId").post(verifyJwt,toggleTweetLike);
+router.route("/likedvideos").get(verifyJwt,getLikedVideos);
+
+//comment.controller.js
+router.route("/getcomments/:videoId").get(getVideoComments);
+router.route("/addcomments/:videoId").post(verifyJwt,addComment);
+router.route("/updatecomment/:commentId").post(verifyJwt,updateComment);
+router.route("/deletecomment/:commentId").delete(verifyJwt,deleteComment);
+
+//subscription routes
+router.route("/subscribe/:channelId").post(verifyJwt,toggleSubscription);
+router.route("/subscribers/:channelId").get(verifyJwt,getUserChannelSubscribers);
+router.route("/subscribed").get(verifyJwt,getSubscribedChannels);
+
+//playlist routes
+router.route("/createplaylist").post(verifyJwt,createPlaylist);
+router.route("/userplaylist").get(verifyJwt,getUserPlaylists);
+router.route("/playlistbyid/:playlistId").get(verifyJwt,getPlaylistById);
+router.route("/addtoplaylist/:playlistId/:videoId").post(addVideoToPlaylist);
+router.route("/removefromplaylist/:playlistId/:videoId").delete(verifyJwt,removeVideoFromPlaylist);
+router.route("/deleteplaylist/:playlistId").delete(verifyJwt,deletePlaylist);
+router.route("/updateplaylist/:playlistId").put(verifyJwt,updatePlaylist);
+
+//dashboard routes
+router.route("/channelstats").get(verifyJwt,getChannelStats)
+router.route("/channelvideos").get(verifyJwt,getChannelVideos)
+router.route("/chanvideos/:channel").get(verifyJwt,getChanVideos)
+
+//secured routes
+router.route("/logout").post(verifyJwt,logoutuser)
+router.route("/refresh-accesstoken").post(refreshAccessToken)
+router.route("/change-password").post(verifyJwt,changecurrentpassword)
+router.route("/current-user").get(verifyJwt,getCurrentUser)
+router.route("/update-account").patch(verifyJwt,updateAccountdetails)
+router.route("/update-image").patch(verifyJwt,upload.single("avatar"),updateuseravatar)
+router.route("/c/:username").get(verifyJwt,getUserchannelprofile)
+router.route("/history").get(verifyJwt,getWatchhistory)
+
+export { router}
