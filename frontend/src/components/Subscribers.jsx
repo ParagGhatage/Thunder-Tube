@@ -10,7 +10,7 @@ const Subscribers = ({channelId, cookies }) => {
        console.log(cookies)
         const accessToken =cookies.accessToken;
         console.log(accessToken)
-const response = await axios.get(`https://thunder-tube.vercel.app/api/v1/users/subscribers/${channelId}`,{headers: {
+const response = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/subscribers/${channelId}`,{headers: {
     Authorization: `Bearer ${accessToken}`,
   }},
  {headers: {

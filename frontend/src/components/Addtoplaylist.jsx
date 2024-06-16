@@ -14,7 +14,7 @@ const Addtoplaylist = ({ cookies, videoToAdd }) => {
 
     const fetchPlaylists = async () => {
         const accessToken = cookies.accessToken;
-        const response = await axios.get('https://thunder-tube.vercel.app/api/v1/users/userplaylist', {
+        const response = await axios.get('https://thunder-tube-backend.vercel.app/api/v1/users/userplaylist', {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
@@ -25,7 +25,7 @@ const Addtoplaylist = ({ cookies, videoToAdd }) => {
     const addToPlaylist = async () => {
         try {
             const accessToken = cookies.accessToken;
-            const response = await axios.post(`https://thunder-tube.vercel.app/api/v1/users/addtoplaylist/${selectedPlaylist}/${videoToAdd}`, {
+            const response = await axios.post(`http://localhost:8000/api/v1/users/addtoplaylist/${selectedPlaylist}/${videoToAdd}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

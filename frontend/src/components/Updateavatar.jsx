@@ -18,7 +18,7 @@ const Updateavatar = ({cookies}) => {
 
     try {
       const response = await axios.patch(
-        'https://thunder-tube.vercel.app/api/v1/users/update-image',
+        'https://thunder-tube-backend.vercel.app/api/v1/users/update-image',
         formData,
         {
           headers: {

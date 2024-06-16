@@ -10,7 +10,7 @@ const Updateaccount = (cookies) => {
     e.preventDefault();
     
     const accessToken =cookies.cookies.accessToken;
-      const response = await axios.patch(`https://thunder-tube.vercel.app/api/v1/users/update-account`, {
+      const response = await axios.patch(`https://thunder-tube-backend.vercel.app/api/v1/users/update-account`, {
         fullName,
         email
       },{headers: {

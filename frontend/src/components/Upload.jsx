@@ -25,7 +25,7 @@ const Upload = ({ isAuthenticated, setIsAuthenticated, cookies }) => {
 
     try {
       const accessToken = cookies.accessToken;
-      const response = await axios.post('https://thunder-tube.vercel.app/api/v1/users/publish', data, {
+      const response = await axios.post('https://thunder-tube-backend.vercel.app/api/v1/users/publish', data, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

@@ -12,7 +12,7 @@ const Deletemycomments = ({ videoId, cookies  }) => {
     const fetchComments = async () => {
         try {
             const accessToken = cookies.accessToken;
-            const response = await axios.get(`https://thunder-tube.vercel.app/api/v1/users/getcomments/${videoId}`,{   headers: { Authorization: `Bearer ${accessToken}` } });
+            const response = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/getcomments/${videoId}`,{   headers: { Authorization: `Bearer ${accessToken}` } });
             setComments(response.data.data);
         } catch (error) {
             console.error('Error fetching comments:', error);

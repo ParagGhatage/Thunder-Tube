@@ -22,7 +22,7 @@ const Login = ({ setIsAuthenticated, setCookies }) => {
 
     try {
       // Make a login request to the server
-      const response = await axios.post('https://thunder-tube.vercel.app/api/v1/users/login', formData);
+      const response = await axios.post('https://thunder-tube-backend.vercel.app/api/v1/users/login', formData);
       
       if (response.data && response.data.data) {
         // Set tokens in cookies upon successful login

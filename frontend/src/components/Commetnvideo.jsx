@@ -19,7 +19,7 @@ const Commentvideo = ({ videoId, cookies }) => {
 
         // Make a login request to the server
         const accessToken = cookies.accessToken;
-        await axios.post(`https://thunder-tube.vercel.app/api/v1/users/addcomments/${videoId}`, formData, {
+        await axios.post(`https://thunder-tube-backend.vercel.app/api/v1/users/addcomments/${videoId}`, formData, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }

@@ -5,7 +5,7 @@ const Deletecomment = ({ commentId , cookies }) => {
     const handleDelete = async () => {
         try {
             const accessToken = cookies.accessToken;
-            await axios.delete(`https://thunder-tube.vercel.app/api/v1/users/deletecomment/${commentId}`,{
+            await axios.delete(`https://thunder-tube-backend.vercel.app/api/v1/users/deletecomment/${commentId}`,{
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

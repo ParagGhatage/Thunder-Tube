@@ -11,7 +11,7 @@ const [subscribed,setsubscribed]=useState();
        console.log(cookies)
         const accessToken =cookies.accessToken;
         console.log(accessToken)
-const response = await axios.post(`https://thunder-tube.vercel.app/api/v1/users/subscribe/${channelId}`,{headers: {
+const response = await axios.post(`https://thunder-tube-backend.vercel.app/api/v1/users/subscribe/${channelId}`,{headers: {
     Authorization: `Bearer ${accessToken}`,
   }},
  {headers: {

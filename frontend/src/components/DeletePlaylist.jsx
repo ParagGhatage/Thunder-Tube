@@ -5,7 +5,7 @@ const DeletePlaylist = ({ playlistId,cookies }) => {
     const handleDelete = async () => {
         try {
             const accessToken = cookies.accessToken;
-            const response = await axios.delete(`https://thunder-tube.vercel.app/api/v1/users/deleteplaylist/${playlistId}`, {
+            const response = await axios.delete(`https://thunder-tube-backend.vercel.app/api/v1/users/deleteplaylist/${playlistId}`, {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
               },

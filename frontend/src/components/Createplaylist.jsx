@@ -19,7 +19,7 @@ const Createplaylist = ({ isAuthenticated, setIsAuthenticated, cookies }) => {
 
     try {
       const accessToken = cookies.accessToken;
-      const response = await axios.post('https://thunder-tube.vercel.app/api/v1/users/createplaylist', formData, {
+      const response = await axios.post('https://thunder-tube-backend.vercel.app/api/v1/users/createplaylist', formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
