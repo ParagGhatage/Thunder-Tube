@@ -15,7 +15,7 @@ export default defineConfig({
   },
   
   build: {
-    outDir: 'build', // Set the output directory to 'build'
+    outDir: 'public', // Set the output directory to 'build'
   },
   
   css: {
