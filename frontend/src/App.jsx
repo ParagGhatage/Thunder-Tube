@@ -41,7 +41,7 @@ const App = () => {
   // Logout function to clear cookies and update authentication status
   const logout = async() => {
     const accessToken=cookies.accessToken
-    const response =await axios.post('http://localhost:8000/api/v1/users/logout',null,{headers: {
+    const response =await axios.post('https://thunder-tube-backend.vercel.app/api/v1/users/logout',null,{headers: {
       Authorization: `Bearer ${accessToken}`
     }
 })
