@@ -2,25 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    /* Define other variables as needed */
-  }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    /* Define dark mode variables */
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border; /* Apply Tailwind utility classes */
-  }
-  body {
-    @apply bg-background text-foreground; /* Apply custom background and text colors */
-  }
-}
