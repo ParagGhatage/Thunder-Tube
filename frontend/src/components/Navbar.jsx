@@ -20,7 +20,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, logout }) => {
           <Link to="/Home" className="text-white hover:text-gray-300">Dashboard</Link>
           <Link to="/actions" className="text-white hover:text-gray-300">Actions</Link>
          {!isAuthenticated && <Link to="/login" className="text-white hover:text-gray-300">login</Link>}
-         {!isAuthenticated && <Link to="/Register" className="text-white hover:text-gray-300">Register</Link>}
+         {!isAuthenticated && <Link to="/register" className="text-white hover:text-gray-300">Register</Link>}
           {/* Conditional rendering of Logout button based on authentication status */}
           {isAuthenticated && <button onClick={handleLogout} className="text-white hover:text-gray-300">Logout</button>}
           {/* 
