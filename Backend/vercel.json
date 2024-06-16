@@ -12,10 +12,5 @@
       "src": "/(.*)",
       "dest": "/src/index.js"
     }
-  ],
-  "env": {
-    "PORT": "8000",
-    "CORS_ORIGIN": "https://thunder-tube.vercel.app/*",
-    "DATABASE_URL": "mongodb+srv://parag1:parag123@parag.vavmizb.mongodb.net/"
-  }
+  ]
 }
