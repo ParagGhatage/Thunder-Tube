@@ -11,7 +11,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
   const userId=req.user._id;
   const getvideocount=await Video.countDocuments({owner:userId});
   console.log(getvideocount);
-  const getlikecount=await like.countDocuments({likedby:userId});
+  const getlikecount=await like.countDocuments({likedBy:userId});
   console.log(getlikecount);
   const getsubscribercount=await Video.countDocuments({channel:userId});
   console.log(getsubscribercount);

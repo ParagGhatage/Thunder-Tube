@@ -15,7 +15,7 @@ const VideoList = ({ isAuthenticated, setIsAuthenticated, cookies }) => {
     const fetchVideos = async () => {
         try {
             const accessToken = cookies.accessToken;
-            const response = await axios.get(`http://localhost:8000/api/v1/users/channelviedeos`, {
+            const response = await axios.get(`https://thunder-tube.vercel.app/api/v1/users/channelviedeos`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

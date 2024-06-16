@@ -7,7 +7,7 @@ import {asyncHandler} from "../utils/asyncHandler.js"
 const getVideoComments = asyncHandler(async (req, res) => {
     //TODO: get all comments for a video
     const {videoId}=req.params
-    const allcomments=await Comment.find({viedeo:videoId});
+    const allcomments=await Comment.find({video:videoId});
   //  console.log(allcomments);
     return res
     .status(201)
@@ -21,7 +21,7 @@ const addComment = asyncHandler(async (req, res) => {
     const {videoId}=req.params
     const comment=await Comment.create({
         content:content,
-        viedeo:videoId,
+        video:videoId,
         owner:req.user._id
         
     })

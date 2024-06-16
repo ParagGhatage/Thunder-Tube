@@ -22,7 +22,7 @@ const Allvideos = ({ isAuthenticated, setIsAuthenticated, cookies }) => {
     const fetchVideos = async () => {
         try {
             const accessToken = cookies.accessToken;
-            const response = await axios.get('http://localhost:8000/api/v1/users/getall');
+            const response = await axios.get('https://thunder-tube.vercel.app/api/v1/users/getall');
             setVideos(response.data.data);
         } catch (error) {
             console.error('Error fetching videos:', error);

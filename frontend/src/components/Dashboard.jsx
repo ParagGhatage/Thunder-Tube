@@ -16,7 +16,7 @@ const Dashboard = ({ cookies }) => {
         try {
             const accessToken = cookies.accessToken;
 
-            const response = await axios.get('http://localhost:8000/api/v1/users/userplaylist', {
+            const response = await axios.get('https://thunder-tube.vercel.app/api/v1/users/userplaylist', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
@@ -30,12 +30,12 @@ const Dashboard = ({ cookies }) => {
     const fetchVideosForPlaylist = async (playlistId) => {
         try {
             const accessToken = cookies.accessToken;
-            const playlistResponse = await axios.get(`http://localhost:8000/api/v1/users/playlistbyid/${playlistId}`, {
+            const playlistResponse = await axios.get(`https://thunder-tube.vercel.app/api/v1/users/playlistbyid/${playlistId}`, {
                 headers: { Authorization: `Bearer ${accessToken}` }
             });
             const playlistVideos = await Promise.all(
                 playlistResponse.data.data.video.map(async (videoId) => {
-                    const videoResponse = await axios.get(`http://localhost:8000/api/v1/users/viedeos/${videoId}`, {   headers: { Authorization: `Bearer ${accessToken}` } });
+                    const videoResponse = await axios.get(`https://thunder-tube.vercel.app/api/v1/users/viedeos/${videoId}`, {   headers: { Authorization: `Bearer ${accessToken}` } });
                     return videoResponse.data.data;
                 })
             );

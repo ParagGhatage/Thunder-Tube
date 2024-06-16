@@ -8,7 +8,7 @@ const Subscribed = ({ cookies }) => {
   const checkSubscribed = async () => {
     const accessToken = cookies.accessToken;
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/users/subscribed`, {
+      const response = await axios.get(`https://thunder-tube.vercel.app/api/v1/users/subscribed`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         }

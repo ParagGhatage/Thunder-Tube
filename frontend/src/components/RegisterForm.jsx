@@ -27,14 +27,14 @@ const RegisterForm = () => {
     e.preventDefault();
 
     const data = new FormData();
-    data.append('fullname', formData.fullName);
-    data.append('username', formData.userName);
+    data.append('fullName', formData.fullName);
+    data.append('userName', formData.userName);
     data.append('email', formData.email);
     data.append('password', formData.password);
     data.append('avatar', formData.avatar);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/users/register', data);
+      const response = await axios.post('/api/v1/users/register', data);
       console.log(response.data);
       setSuccessMessage(response.data.message);
     } catch (error) {
