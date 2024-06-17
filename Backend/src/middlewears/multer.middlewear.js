@@ -1,9 +1,13 @@
 import multer from 'multer';
+import path from 'path';
 
-// Define storage for Multer
+// Define absolute path to temp directory
+const tempDir = path.join(__dirname, 'public', 'temp');
+
+// Multer storage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/temp'); // Set destination directory
+    cb(null, tempDir); // Use absolute path
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname); // Keep original filename
@@ -11,4 +15,4 @@ const storage = multer.diskStorage({
 });
 
 // Initialize Multer with the configured storage
-export const upload = multer({ storage: storage });// Assuming 'avatar' is the field name
+export const upload = multer({ storage: storage });
