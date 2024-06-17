@@ -1,18 +1,16 @@
 import multer from 'multer';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-// Manually define __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+// Define storage for Multer
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, 'public', 'temp'));
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
+  destination: function (req, file, cb) {
+    cb(null, './public/temp'); // Set destination directory
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Keep original filename
+  }
 });
 
-export const upload = multer({ storage: storage });
+// Initialize Multer with the configured storage
+const upload = multer({ storage: storage }).single('avatar'); // Assuming 'avatar' is the field name
+
+export { upload };
