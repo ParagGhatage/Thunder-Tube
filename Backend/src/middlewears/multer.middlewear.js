@@ -12,5 +12,3 @@ const storage = multer.diskStorage({
 
 // Initialize Multer with the configured storage
 export const upload = multer({ storage: storage });// Assuming 'avatar' is the field name
-
-export { upload };
