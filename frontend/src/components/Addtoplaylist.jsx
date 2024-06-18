@@ -38,26 +38,35 @@ const Addtoplaylist = ({ cookies, videoToAdd }) => {
     };
 
     return (
-        <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold my-4">Add to Playlist</h1>
-            <select
-                className="border border-gray-300 rounded px-3 py-2 mb-4"
-                onChange={(e) => setSelectedPlaylist(e.target.value)}
-            >
-                <option value="">Select a playlist</option>
-                {playlists.map((playlist) => (
-                    <option key={playlist._id} value={playlist._id}>{playlist.name}</option>
-                ))}
-            </select>
-            <button
-                className=" bg-black   hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-                onClick={addToPlaylist}
-            >
-                Add to Playlist
-            </button>
-            {successMessage && <p className="text-green-600 mt-2">{successMessage}</p>}
-            {errorMessage && <p className="text-red-600 mt-2">Error: {errorMessage}</p>}
+                <div className="container mx-auto px-4 py-8 bg-white shadow-md rounded-lg">
+            <h1 className="text-3xl font-extrabold text-center mb-6 text-gray-800">Add to Playlist</h1>
+            <div className="flex flex-col items-center">
+                <select
+                    className="w-full max-w-md border border-gray-300 rounded-lg px-4 py-2 mb-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onChange={(e) => setSelectedPlaylist(e.target.value)}
+                >
+                    <option value="">Select a playlist</option>
+                    {playlists.map((playlist) => (
+                        <option key={playlist._id} value={playlist._id}>
+                            {playlist.name}
+                        </option>
+                    ))}
+                </select>
+                <button
+                    className="w-full max-w-md bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onClick={addToPlaylist}
+                >
+                    Add to Playlist
+                </button>
+                {successMessage && (
+                    <p className="text-green-600 mt-4 font-medium">{successMessage}</p>
+                )}
+                {errorMessage && (
+                    <p className="text-red-600 mt-4 font-medium">Error: {errorMessage}</p>
+                )}
+            </div>
         </div>
+
     );
 };
 
