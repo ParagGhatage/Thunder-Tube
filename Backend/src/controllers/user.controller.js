@@ -67,9 +67,9 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   console.log(req.body); // Log the entire req.body object
-  console.log(req.files); // Log the entire req.files object
+  console.log(req.file); // Log the entire req.files object
 
-  const avatarFiles = req.files && req.files.avatar;
+  const avatarFiles = req.files && req.files?.[0].avatar;
   //const coverImageFiles = req.files && req.files.coverImage; // Define coverImageFiles
 
   //if (!avatarFiles || !avatarFiles[0] || !avatarFiles[0].path) {
