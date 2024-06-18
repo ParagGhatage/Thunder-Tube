@@ -56,7 +56,7 @@ const addVideoToPlaylist = asyncHandler(async (req, res) => {
     if(!videos){
         throw new ApiError(400,"video not found");
     }
-    list.video.push(videos);
+    list.videos.push(videos);
     await list.save();
     console.log(list);
     return res
