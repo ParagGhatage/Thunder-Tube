@@ -22,5 +22,10 @@ const storage = multer.diskStorage({
   }
 });
 
-// Initialize Multer with the configured storage
-export const upload = multer({ storage: storage });
+// Initialize Multer with the configured storage and increased fileSize limit
+export const upload = multer({ 
+  storage: storage,
+  limits: {
+    fileSize: 100 * 1024 * 1024 // 100MB
+  }
+});
