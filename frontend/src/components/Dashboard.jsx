@@ -55,7 +55,7 @@ const Dashboard = ({ cookies }) => {
             <h1 className="text-2xl font-bold my-4">My Playlists</h1>
             <ul className="grid grid-cols-3 gap-4">
                 {playlists.map((playlist) => (
-                    <li key={playlist._id} onClick={() => handlePlaylistClick(playlist._id)} className="border p-2 cursor-pointer hover:bg-gray-100">
+                    <li key={playlist._id} onClick={() => handlePlaylistClick(playlist._id)} className="border p-2 cursor-pointer text-black hover:bg-gray-100">
                         {playlist.name}
                         <DeletePlaylist playlistId={playlist._id} cookies={cookies}/>
                     </li>
