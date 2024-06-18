@@ -13,7 +13,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, logout }) => {
     <nav className="bg-gray-800 py-4 sticky top-0 z-50">
       {/* Navigation items */}
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white text-3xl font-bold">Video App</Link>
+        <Link to="/" className="text-white text-3xl font-bold">ThunderTube</Link>
 
         <div className="space-x-4">
           <Link to="/" className="text-white hover:text-gray-300">Home</Link>
