@@ -63,7 +63,7 @@ const Dashboard = ({ cookies }) => {
             </ul>
             {selectedPlaylist && (
                 <div>
-                    <h2 className="text-xl font-bold my-4">Videos in {playlists.find((playlist) => playlist._id === selectedPlaylist)?.name}</h2>
+                    <h2 className="text-xl text-black font-bold my-4">Videos in {playlists.find((playlist) => playlist._id === selectedPlaylist)?.name}</h2>
                     <ul className="grid grid-cols-2 gap-4">
                         {videos.map((video) => (
                             <li key={video._id} className="border p-2">
