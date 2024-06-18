@@ -72,7 +72,7 @@ const Dashboard = ({ cookies }) => {
                                     <source src={video.videoFile} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
-                                <a href={video.viedeoFile} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mt-2">Watch Video</a>
+                                <a href={video.videoFile} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mt-2">Watch Video</a>
                                 <Removefromplaylist playlistId={selectedPlaylist} videoId={video._id} cookies={cookies}/>
                             </li>
                         ))}
