@@ -67,7 +67,7 @@ const App = () => {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/upload" element={<Upload isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} cookies={cookies}/>} />
         <Route path="/changepassword" element={<ChangePassword isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} cookies={cookies}/>} />
-        <Route path="/channelviedeos" element={<VideoList isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} cookies={cookies}/>} />
+        <Route path="/channelvideos" element={<VideoList isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} cookies={cookies}/>} />
         <Route path="/createplaylist" element={<Createplaylist isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} cookies={cookies}/>} />
         <Route path="/Register" element={<RegisterForm  />}/>
         <Route path="/addtoplaylist" element={<Addtoplaylist  />}/>
