@@ -17,17 +17,22 @@ const Commentvideo = ({ videoId, cookies }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Make a login request to the server
-        const accessToken = cookies.accessToken;
-        await axios.post(`https://thunder-tube-backend.vercel.app/api/v1/users/addcomments/${videoId}`, formData, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            }
-        });
-        setSuccessMessage("comment added");
+        try {
+            const accessToken = cookies.accessToken;
+            await axios.post(`https://thunder-tube-backend.vercel.app/api/v1/users/addcomments/${videoId}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            setSuccessMessage("Comment added successfully");
 
-        // Clear form data after submission
-        setFormData({ content: '' });
+            // Clear form data after submission
+            setFormData({ content: '' });
+        } catch (error) {
+            console.error('Error adding comment:', error);
+            // Handle error, e.g., show an error message to the user
+            setSuccessMessage("Failed to add comment. Please try again.");
+        }
     };
 
     return (
@@ -41,19 +46,18 @@ const Commentvideo = ({ videoId, cookies }) => {
                     value={formData.content}
                     onChange={handleChange}
                     placeholder="Enter your comment"
-                    className="border border-gray-300 rounded px-3 py-2 w-full"
+                    className="border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-500"
                 />
 
                 {/* Submit button */}
                 <button
                     type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 focus:outline-none focus:shadow-outline"
                 >
                     Post Comment
                 </button>
             </form>
             {successMessage && <p className="text-green-600 mt-2">{successMessage}</p>}
-            
         </div>
     );
 };

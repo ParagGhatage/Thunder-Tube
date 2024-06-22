@@ -1,31 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Navbar component with Logout button
-const Navbar = ({ isAuthenticated, setIsAuthenticated, logout }) => {
-  // Handler for Logout button click
+const Navbar = ({ isAuthenticated, logout }) => {
   const handleLogout = () => {
-    // Call the logout function
     logout();
   };
 
   return (
-    <nav className="bg-gray-800 py-4 sticky top-0 z-50">
-      {/* Navigation items */}
+    <nav className="bg-gradient-to-r from-purple-600 to-indigo-600 py-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white text-3xl font-bold">ThunderTube</Link>
+        {/* Branding with a styled title */}
+        <Link to="/" className="text-white text-3xl font-extrabold tracking-tight hover:text-gray-100 transition duration-300">
+          ThunderTube
+        </Link>
 
         <div className="space-x-4">
-          <Link to="/" className="text-white hover:text-gray-300">Home</Link>
-          <Link to="/Home" className="text-white hover:text-gray-300">Dashboard</Link>
-          <Link to="/actions" className="text-white hover:text-gray-300">Actions</Link>
-         {!isAuthenticated && <Link to="/login" className="text-white hover:text-gray-300">login</Link>}
-         {!isAuthenticated && <Link to="/register" className="text-white hover:text-gray-300">Register</Link>}
-          {/* Conditional rendering of Logout button based on authentication status */}
-          {isAuthenticated && <button onClick={handleLogout} className="text-white hover:text-gray-300">Logout</button>}
-          {/* 
-          {isAuthenticated && <Link to="/upload" className="text-white hover:text-gray-300">Upload</Link>}
-          */}
+          {/* Navigation links */}
+          <Link to="/" className="text-white hover:text-gray-100 transition duration-300">Home</Link>
+          <Link to="/dashboard" className="text-white hover:text-gray-100 transition duration-300">Dashboard</Link>
+          <Link to="/actions" className="text-white hover:text-gray-100 transition duration-300">Actions</Link>
+
+          {/* Conditional rendering of authentication links */}
+          {!isAuthenticated && (
+            <>
+              <Link to="/login" className="text-white hover:text-gray-100 transition duration-300">Login</Link>
+              <Link to="/register" className="text-white hover:text-gray-100 transition duration-300">Register</Link>
+            </>
+          )}
+
+          {/* Conditional rendering of Logout button */}
+          {isAuthenticated && (
+            <button onClick={handleLogout} className="text-white hover:text-gray-100 transition duration-300 bg-transparent border border-white py-2 px-4 rounded hover:bg-white hover:border-transparent">
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </nav>
