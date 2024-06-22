@@ -5,33 +5,26 @@ import { Button } from './ui/button';
 import Togglesubscribe from './Togglesubscribe';
 
 const Chanprofile = ({ channelId, cookies }) => {
-    const [showChannelDetails, setShowChannelDetails] = useState(false);
-    const [showMoreFromChannel, setShowMoreFromChannel] = useState(false);
+    const [chand, setChand] = useState(false);
+    const [khand, setkhand] = useState(false);
 
-    const toggleChannelDetails = () => {
-        setShowChannelDetails(!showChannelDetails);
+    const toggleChannel = () => {
+        setChand(!chand);
     };
-
-    const toggleMoreFromChannel = () => {
-        setShowMoreFromChannel(!showMoreFromChannel);
+    const togglekhand = () => {
+        setkhand(!khand);
     };
 
     return (
         <div className="mt-4">
-            <Button onClick={toggleChannelDetails} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <Button onClick={toggleChannel} >
                 Channel
-            </Button>
-            <br />
-            {showChannelDetails && (
-                <div className="mt-4">
-                    <button onClick={toggleMoreFromChannel} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
-                        More from Channel
-                    </button>
-                    <Togglesubscribe cookies={cookies} channelId={channelId} />
-                    <Subscribers channelId={channelId} cookies={cookies} />
-                    {showMoreFromChannel && <Channel channel={channelId} cookies={cookies} />}
-                </div>
-            )}
+            </Button><br/>
+          { chand&& <button onClick={togglekhand} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"> more from channel </button>}
+            {chand&&<Togglesubscribe cookies={cookies} channelId={channelId} />}
+            {chand && <Subscribers channelId={channelId} cookies={cookies} />}
+            {khand && <Channel channel={channelId} cookies={cookies} />}
+
         </div>
     );
 };

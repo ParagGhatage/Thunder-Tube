@@ -1,19 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 
-const Deletecomment = ({ commentId, cookies }) => {
+const Deletecomment = ({ commentId , cookies }) => {
     const handleDelete = async () => {
         try {
             const accessToken = cookies.accessToken;
-            await axios.delete(`https://thunder-tube-backend.vercel.app/api/v1/users/deletecomment/${commentId}`, {
+            await axios.delete(`https://thunder-tube-backend.vercel.app/api/v1/users/deletecomment/${commentId}`,{
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            console.log('Comment deleted successfully');
+            console.log('Video deleted successfully');
             // Optionally, update the UI or perform any other action after deletion
         } catch (error) {
-            console.error('Error deleting comment:', error);
+            console.error('Error deleting video:', error);
             // Handle error, e.g., show an error message
         }
     };
@@ -21,9 +21,9 @@ const Deletecomment = ({ commentId, cookies }) => {
     return (
         <button
             onClick={handleDelete}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         >
-            Delete Comment
+            Delete comment
         </button>
     );
 };

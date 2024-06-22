@@ -24,52 +24,40 @@ const Createplaylist = ({ isAuthenticated, setIsAuthenticated, cookies }) => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      console.log(response.data); // Assuming backend sends a success message
-      // Clear form data after successful submission
-      setFormData({ name: '', description: '' });
     } catch (error) {
-      console.error('Error creating playlist:', error);
-      // Handle error, e.g., show an error message to the user
+      console.error(error);
     }
   };
 
   return (
     <div className="container mx-auto max-w-md mt-20">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 className="text-2xl font-bold mb-4 text-center">Create Playlist</h2>
+      <div>
+        <h2 className="text-2xl font-bold mb-4">Create Playlist</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Input fields for playlist name and description */}
-          <div>
-            <label htmlFor="name" className="block text-gray-700">
-              Name:
-            </label>
+          <label className="block">
+            <span className="text-gray-700">Name:</span>
             <input
               type="text"
-              id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
-              placeholder="Enter playlist name"
-              required
+              placeholder="Name"
             />
-          </div>
+          </label>
 
-          <div>
-            <label htmlFor="description" className="block text-gray-700">
-              Description:
-            </label>
+          <label className="block">
+            <span className="text-gray-700">Description:</span>
             <input
               type="text"
-              id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
-              placeholder="Enter playlist description"
-              required
+              placeholder="Description"
             />
-          </div>
+          </label>
 
           {/* Submit button */}
           <button

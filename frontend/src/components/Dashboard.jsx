@@ -52,38 +52,37 @@ const Dashboard = ({ cookies }) => {
 
     return (
         <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-bold my-6 text-center">My Playlists</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {playlists.map((playlist) => (
-                    <div key={playlist._id} onClick={() => handlePlaylistClick(playlist._id)} className="border p-4 cursor-pointer text-black hover:bg-gray-100 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                        <div className="flex justify-between items-center">
-                            <span className="font-semibold">{playlist.name}</span>
-                            <DeletePlaylist playlistId={playlist._id} cookies={cookies}/>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            {selectedPlaylist && (
-                <div className="mt-8">
-                    <h2 className="text-2xl text-black font-bold my-4">Videos in {playlists.find((playlist) => playlist._id === selectedPlaylist)?.name}</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {videos.map((video) => (
-                            <div key={video._id} className="border p-4 rounded-lg shadow-md">
-                                <p className="font-semibold mb-2">{video.title}</p>
-                                <div className="aspect-w-16 aspect-h-9">
-                                    <video controls className="w-full h-full rounded-md object-cover">
-                                        <source src={video.videoFile} type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                                <a href={video.videoFile} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mt-2">Watch Video</a>
-                                <Removefromplaylist playlistId={selectedPlaylist} videoId={video._id} cookies={cookies}/>
-                            </div>
-                        ))}
-                    </div>
+    <h1 className="text-3xl font-bold my-6 text-center">My Playlists</h1>
+    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {playlists.map((playlist) => (
+            <li key={playlist._id} onClick={() => handlePlaylistClick(playlist._id)} className="border p-4 cursor-pointer text-black hover:bg-gray-100 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                <div className="flex justify-between items-center">
+                    <span className="font-semibold">{playlist.name}</span>
+                    <DeletePlaylist playlistId={playlist._id} cookies={cookies}/>
                 </div>
-            )}
+            </li>
+        ))}
+    </ul>
+    {selectedPlaylist && (
+        <div className="mt-8">
+            <h2 className="text-2xl text-black font-bold my-4">Videos in {playlists.find((playlist) => playlist._id === selectedPlaylist)?.name}</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {videos.map((video) => (
+                    <li key={video._id} className="border p-4 rounded-lg shadow-md">
+                        <p className="font-semibold mb-2">{video.title}</p>
+                        <video controls className="w-full rounded-md">
+                            <source src={video.videoFile} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        <a href={video.videoFile} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mt-2">Watch Video</a>
+                        <Removefromplaylist playlistId={selectedPlaylist} videoId={video._id} cookies={cookies}/>
+                    </li>
+                ))}
+            </ul>
         </div>
+    )}
+</div>
+
     );
 };
 

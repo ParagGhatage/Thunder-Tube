@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import UserChannelProfile from './UserChannelProfile';
+import Togglesubscribe from './Togglesubscribe';
 import Subscribers from './Subscribers';
 import Subscribed from './Subscribed';
+import Channel from './Channel';
 
-const Getcurrentuser = ({ cookies }) => {
+const Getcurrentuser = (cookies) => {
   const [currentUser, setCurrentUser] = useState(null);
+  console.log(cookies)
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const accessToken = cookies.cookies.accessToken;
+        const accessToken =cookies.cookies.accessToken;
+        console.log(accessToken)
         const response = await axios.get('https://thunder-tube-backend.vercel.app/api/v1/users/current-user', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
+        console.log(response)
         setCurrentUser(response.data.data);
       } catch (error) {
         console.error('Error fetching current user:', error);
@@ -22,25 +28,23 @@ const Getcurrentuser = ({ cookies }) => {
     };
 
     fetchCurrentUser();
-  }, [cookies.cookies.accessToken]);
+  }, []);
 
   if (!currentUser) {
-    return <div className="text-center mt-4">Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="my-8">
-        <h1 className="text-3xl font-bold mb-2">Welcome, {currentUser.userName}</h1>
-        <p className="text-lg mb-2">Email: {currentUser.email}</p>
-        <p className="text-lg mb-4">Full Name: {currentUser.fullName}</p>
-
-        {/* Add more user information as needed */}
-        <div className="flex justify-center space-x-4">
-          <Subscribers cookies={cookies.cookies} channelId={currentUser._id} />
-          <Subscribed cookies={cookies.cookies} />
-        </div>
-      </div>
+    <div>
+      <h1>Welcome, {currentUser.userName}</h1>
+      <p>Email: {currentUser.email}</p>
+      <p>Full Name: {currentUser.fullName}</p>
+      
+      
+      {/* Add more user information as needed */}
+      <Subscribers cookies={cookies.cookies} channelId={currentUser._id}/>
+     {/* <Channel cookies={cookies.cookies} channel={currentUser._id}/>*/}
+      <Subscribed cookies={cookies.cookies}/><br/>
     </div>
   );
 };

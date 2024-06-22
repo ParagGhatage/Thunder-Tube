@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Deletecomment from './Deletecomment';
 
-const Deletemycomments = ({ videoId, cookies }) => {
+const Deletemycomments = ({ videoId, cookies  }) => {
     const [comments, setComments] = useState([]);
-
+    
     useEffect(() => {
         fetchComments();
     }, []);
@@ -12,23 +12,21 @@ const Deletemycomments = ({ videoId, cookies }) => {
     const fetchComments = async () => {
         try {
             const accessToken = cookies.accessToken;
-            const response = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/getcomments/${videoId}`, {
-                headers: { Authorization: `Bearer ${accessToken}` }
-            });
+            const response = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/getcomments/${videoId}`,{   headers: { Authorization: `Bearer ${accessToken}` } });
             setComments(response.data.data);
         } catch (error) {
             console.error('Error fetching comments:', error);
         }
     };
-
+    
     return (
         <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-bold my-4">Video Comments</h1>
+            <h1 className="text-2xl font-bold my-4">Video Comments</h1>
             <ul>
                 {comments.map(comment => (
-                    <li key={comment._id} className="border border-gray-300 rounded-lg p-4 mb-4">
+                    <li key={comment._id} className="border-b py-2">
                         <p className="text-gray-800">{comment.content}</p>
-                        <Deletecomment commentId={comment._id} cookies={cookies} />
+                        <Deletecomment commentId={comment._id} cookies={cookies}/>
                     </li>
                 ))}
             </ul>
