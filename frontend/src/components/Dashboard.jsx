@@ -38,7 +38,7 @@ const Dashboard = ({ cookies }) => {
                 playlistResponse.data.data.videos.map(async (videoId) => {
                     const videoResponse = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/videos/${videoId}`, {   headers: { Authorization: `Bearer ${accessToken}` } });
                     console.log(videoResponse)
-                    return videoResponse.data.data.data.videoFile;
+                    return videoResponse.data.data.videoFile;
                 })
             );
             setVideos(playlistVideos);
@@ -76,7 +76,7 @@ const Dashboard = ({ cookies }) => {
                             <source src={video.videoFile} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
-                        <a href={video.videoFile} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mt-2">Watch Video</a>
+                        <a href={videos.videoFile} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mt-2">Watch Video</a>
                         <Removefromplaylist playlistId={selectedPlaylist} videoId={video._id} cookies={cookies}/>
                     </li>
                 ))}
