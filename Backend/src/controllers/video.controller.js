@@ -50,7 +50,7 @@ const getVideoById = asyncHandler(async (req, res) => {
     if(!vid){
         throw new ApiError(400,"video not found")
     }
-    return res
+    return vid
 .status(201)
 .json(new ApiResponse(200,vid, "These are all videos by channel"));
        
