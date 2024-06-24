@@ -29,8 +29,8 @@ const Navbar = ({ isAuthenticated, logout }) => {
             </svg>
           </button>
         </div>
-        <div className={`md:flex space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
-          <Link to="/" className="text-white hover:text-gray-100 transition duration-300">Home</Link>
+        <div className={`md:flex text-xl space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
+          <Link to="/" className="text-white  hover:text-gray-100 transition duration-300">Home</Link>
           <Link to="/dashboard" className="text-white hover:text-gray-100 transition duration-300">Dashboard</Link>
           <Link to="/actions" className="text-white hover:text-gray-100 transition duration-300">Actions</Link>
           {!isAuthenticated && (
@@ -42,7 +42,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
           {isAuthenticated && (
             <button
               onClick={handleLogout}
-              className="text-white hover:text-gray-100 transition duration-300 bg-transparent border border-white py-2 px-4 rounded hover:bg-white hover:border-transparent"
+              className="text-white hover:text-gray-100 transition duration-300 bg-transparent border border-white py-2 px-4 rounded hover:bg-amber-400 hover:border-transparent"
             >
               Logout
             </button>
