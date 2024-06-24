@@ -42,11 +42,11 @@ const publishAVideo = asyncHandler(async (req, res) => {
 })
 //completed
 const getVideoById = asyncHandler(async (req, res) => {
-    const { videoid } = req.params
+    const { videoId } = req.params
     console.log(req.params)
-    console.log(videoid)
+    console.log(videoId)
     //TODO: get video by id
-    const vid=await Video.findById(videoid);
+    const vid=await Video.findById(videoId);
     if(!vid){
         throw new ApiError(400,"video not found")
     }
