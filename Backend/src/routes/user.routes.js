@@ -27,7 +27,7 @@ router.route("/publish").post(verifyJwt,
     ]),publishAVideo) 
     router.route("/videos/:videoid").patch(togglePublishStatus)
 //router.route("/getvideos").get(getAllVideos)
-router.route("/videos/:videoid").get(getVideoById)
+router.route("/videos/:videoId").get(getVideoById)
 router.route("/videos/:videoid").put(updateVideo)
 router.route("/videos/:videoid").delete(deleteVideo)
 router.route("/getall").get(getAllVideos)
