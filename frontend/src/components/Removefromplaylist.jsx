@@ -20,7 +20,7 @@ const Removefromplaylist = ({ playlistId, videoId ,cookies}) => {
 
   return (
     <div>
-      <button onClick={handleRemoveVideo} className='bg-red-400 hover:bg-amber-600 rounded-md'>Remove Video from Playlist</button>
+      <button onClick={handleRemoveVideo} className='bg-red-400 hover:bg-amber-600 rounded-md p-5'>Remove Video from Playlist</button>
       {message && <p>{message}</p>}
     </div>
   );
