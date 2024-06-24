@@ -38,7 +38,7 @@ const Dashboard = ({ cookies }) => {
                 playlistResponse.data.data.videos.map(async (videoId) => {
                     const videoResponse = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/videos/${videoId}`, {   headers: { Authorization: `Bearer ${accessToken}` } });
                     console.log(videoResponse)
-                    return videoResponse.data.data;
+                    return videoResponse.data.data.videoFile;
                 })
             );
             setVideos(playlistVideos);
