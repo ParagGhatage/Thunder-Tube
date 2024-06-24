@@ -33,8 +33,9 @@ const Dashboard = ({ cookies }) => {
             const playlistResponse = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/playlistbyid/${playlistId}`, {
                 headers: { Authorization: `Bearer ${accessToken}` }
             });
+            console.log(playlistResponse)
             const playlistVideos = await Promise.all(
-                playlistResponse.data.data.video.map(async (videoId) => {
+                playlistResponse.data.data.videos.map(async (videoId) => {
                     const videoResponse = await axios.get(`https://thunder-tube-backend.vercel.app/api/v1/users/videos/${videoId}`, {   headers: { Authorization: `Bearer ${accessToken}` } });
                     return videoResponse.data.data;
                 })
@@ -70,7 +71,7 @@ const Dashboard = ({ cookies }) => {
                 {videos.map((video) => (
                     <li key={video._id} className="border p-4 rounded-lg shadow-md">
                         <p className="font-semibold mb-2">{video.title}</p>
-                        <video controls className="w-full rounded-md">
+                        <video controls className="md:w-full flex rounded-md">
                             <source src={video.videoFile} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
